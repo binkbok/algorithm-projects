@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js">
+</script>
+<script>
+$(document).ready(function(){
+	$.getJSON("http://www.federalregister.gov/api/v1/agencies?callback=?", function(data) {
+	for (i=0;i<data.length;i++)
+	{
+		document.write(data[i].name + ",");
+		document.write(data[i].url + "<br> ");
+	}
+  });
+});
+</script>
+</head>
+<body>
+
+
+</body>
+</html>
+
+

@@ -1,0 +1,35 @@
+ 
+<head>
+<script src="jquery-1.10.1.min.js"></script>
+</head>
+<p>I loaded the page</p>
+
+ <script type="text/javascript">
+
+ $(document.ready(function(){
+ 	  $.get("demo_test.asp",function(data,status){
+      alert("Data: " + data + "\nStatus: " + status);
+ });
+
+ $.ajax({   
+    		url : "http://twitter.com/statuses/user_timeline/brettlog.json?callback=?",
+			dataType : "json",
+			timeout:15000,
+	
+			success : function(data)
+			{ 
+				  $("#data").html("Data successfully obtained! <br />");
+  for (i=0; i<data.length; i++)
+				{
+  $("#data").append("<p>" + data[i].text) +"</p>";
+  $("#data").append("<p>" + data[i].created_at +"</p>");
+				}
+			},
+	
+			error : function()
+			{ 
+				alert("Failure!"); 
+			},
+	
+		}); 
+ </script>

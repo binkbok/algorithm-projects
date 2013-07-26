@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<script type="text/javascript" src="jQuery-1.10.1.min.js"></script>
+
+<html>
+<h2>JSON Example by Brett</h2>
+
+<table id="btable" border="1px">
+<tr>
+<th>id</th>
+<th>language</th>
+<th>edition</th>
+<th>author</th>
+</table>
+
+
+<body>
+
+</body>
+</html>
+
+<script language="javascript" type="text/javascript">
+
+
+$.getJSON('ajax/http://www.federalregister.gov/api/v1/agencies', function(data) {
+  var items = [];
+ 
+  $.each(data, function(key, val) {
+    items.push('<li id="' + key + '">' + val + '</li>');
+  });
+ 
+  $('<ul/>', {
+    'class': 'my-new-list',
+    html: items.join('')
+  }).appendTo('body');
+});
+
+/*
+($.ajax({
+      url: "www.federalregister.gov/api/v1/agencies",
+      dataType: "json",
+      success: function (list) {
+            alert(list);
+      }
+}));
+
+*/
+
+ 	var i = 0;
+    var theTable = document.getElementById("btable");
+    
+    
+    for (i in list)
+    { 
+		
+		theTable.appendChild(document.createElement("TR"));
+    	
+    	for (t in list[i])
+    	{
+    		var newTD = document.createElement("TD");
+    		newTD.innerHTML=list[i][t];
+    		theTable.appendChild(newTD);
+    	}
+    };
+
+    
+
+</script>
+
